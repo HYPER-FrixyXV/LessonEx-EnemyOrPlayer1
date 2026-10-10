@@ -4,4 +4,7 @@
     <Project Path="src/Player/Player.csproj" />
     <Project Path="src/Program/Program.csproj" />
   </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/TestProject1/TestProject1.csproj" Id="5fd4e965-5cd9-47a8-b887-e0777d3dc751" />
+  </Folder>
 </Solution>
