@@ -8,7 +8,6 @@ namespace BPascal.LessonEx3.ClassPlayer
 {
     public class Player
     { //parte costruttore
-        private string _name;
         private int _lv; //level
         private int _exp; //experience
         private int _health;
@@ -16,17 +15,7 @@ namespace BPascal.LessonEx3.ClassPlayer
         private bool _isAlive;
         private int _gold;
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (value.IsWhiteSpace() || string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be empty or blank.");
-                }
-            }
-        }
+        public string Name { get; set; }
 
         public int Lv
         {
@@ -94,13 +83,9 @@ namespace BPascal.LessonEx3.ClassPlayer
             }
         }
 
-        public bool IsAlive
+        public bool IsAlive()
         {
-            get { return _isAlive; }
-            private set
-            {
-                _isAlive = value;
-            }
+            return Health > 0;
         }
 
         public int Gold
@@ -132,7 +117,6 @@ namespace BPascal.LessonEx3.ClassPlayer
             Exp = 0;
             MaxHealth = 100;
             Health = MaxHealth;
-            IsAlive = true;
             Gold = 0;
         }
         //metodi
@@ -158,14 +142,13 @@ namespace BPascal.LessonEx3.ClassPlayer
         public void TakeDamage(int amount)
 
         {
-            if (amount <= 0 && IsAlive)
+            if (amount <= 0)
             {
                 throw new ArgumentException("Taking damage in a negative amount? We have Heal() for that bro");
             }
             Health -= amount;
             if (Health <= 0)
             {
-                IsAlive = false;
                 Health = 0;
             }
         }
@@ -189,7 +172,6 @@ namespace BPascal.LessonEx3.ClassPlayer
         private void ResetHealth()
         {
             Health = MaxHealth;
-            IsAlive = true;
         }
     }
 }

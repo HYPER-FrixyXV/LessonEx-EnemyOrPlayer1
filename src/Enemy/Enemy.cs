@@ -7,21 +7,9 @@ namespace BPascal.LessonEx3.ClassEnemy
 {
     public class Enemy
     {
-        private string _name;
         private int _health;
-        private bool _isAlive;
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (value.IsWhiteSpace() || string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be empty or blank.");
-                }
-            }
-        }
+        public string Name {get; set; }
         public int Health
         {
             get { return _health; }
@@ -37,15 +25,6 @@ namespace BPascal.LessonEx3.ClassEnemy
                 }
             }
         }
-        public bool IsAlive
-        {
-            get { return _isAlive; }
-            private set
-            {
-                _isAlive = value;
-            }
-        }
-
         public int Damage { get; set; }
 
         public Enemy(string name, int health, int damage)
@@ -53,7 +32,10 @@ namespace BPascal.LessonEx3.ClassEnemy
             Name = name;
             Health = health;
             Damage = damage;
-            IsAlive = true;
+        }
+        public bool IsAlive()
+        {
+            return Health > 0;
         }
 
         public void TakeDamage(int amount)
@@ -65,7 +47,6 @@ namespace BPascal.LessonEx3.ClassEnemy
             Health -= amount;
             if (Health <= 0)
             {
-                IsAlive = false;
                 Health = 0;
             }
         }
