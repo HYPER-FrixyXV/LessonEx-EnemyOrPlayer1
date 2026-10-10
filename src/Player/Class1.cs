@@ -1,0 +1,179 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace BPascal.LessonEx3.ClassPlayer
+{
+    public class Player
+    { //parte costruttore
+        private string _name;
+        private int _lv; //level
+        private int _exp; //experience
+        private int _health;
+        private int _maxHealth;
+        private bool _isAlive;
+        private int _gold;
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value.IsWhiteSpace() || string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Name cannot be empty or blank.");
+                }
+            }
+        }
+
+        public int Lv
+        {
+            get { return _lv; }
+            private set
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentException("Level cannot be less than 1.");
+                }
+            }
+        }
+
+        public int Exp
+        {
+            get { return _exp; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Experience cannot be negative.");
+                }
+                if (value >= 100)
+                {
+                    Lv++;
+                    _exp = value - 100;
+                }
+                else
+                {
+                    _exp = value;
+                }
+            }
+        }
+
+        public int Health
+        {
+            get { return _health; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Health cannot be negative.");
+                }
+                if (value > _maxHealth)
+                {
+                    _health = _maxHealth;
+                }
+                else
+                {
+                    _health = value;
+                }
+            }
+        }
+
+        public int MaxHealth
+        {
+            get { return _maxHealth; }
+            private set
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentException("MaxHealth cannot be less than 1.");
+                }
+                _maxHealth = value;
+            }
+        }
+
+        public bool IsAlive
+        {
+            get { return _isAlive; }
+            private set
+            {
+                _isAlive = value;
+            }
+        }
+
+        public int Gold
+        {
+            get { return _gold; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Gold cannot be negative.");
+                }
+                _gold = value;
+            }
+        }
+
+        public Player(string name)
+        {
+            Name = name;
+            Lv = 1;
+            Exp = 0;
+            MaxHealth = 100;
+            Health = MaxHealth;
+            IsAlive = true;
+            Gold = 0;
+        }
+        //metodi
+        public void AddExp(int amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount must be positive.");
+            }
+            Exp += amount;
+        }
+        public void ResetExp()
+        {
+            Exp = 0;
+        }
+        public void TakeDamage(int amount)
+
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount must be positive.");
+            }
+            Health -= amount;
+            if (Health <= 0)
+            {
+                IsAlive = false;
+                Health = 0;
+            }
+        }
+
+        public void Heal(int amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount must be positive.");
+            }
+            Health += amount;
+        }
+        public void GainGold(int amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount must be positive.");
+            }
+            Gold += amount;
+        }
+        public void ResetHealth()
+        {
+            Health = MaxHealth;
+            IsAlive = true;
+        }
+    }
+}
