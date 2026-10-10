@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Enemy\Enemy.csproj" />
+    <ProjectReference Include="..\Player\Player.csproj" />
+  </ItemGroup>
+
 </Project>
