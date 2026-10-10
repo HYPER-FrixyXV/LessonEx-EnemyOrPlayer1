@@ -37,24 +37,34 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Insert your name");
-        string name = Console.ReadLine();
-        Player You = new Player(name);
+        try
+        {
+            //Console.WriteLine("Insert your name");
+            //string name = Console.ReadLine();
+            Player You = new Player("name");
+            Console.WriteLine(You.Name);
 
-        Enemy Slime = new Enemy("Slime", 50, 5);
+            Enemy Slime = new Enemy("Slime", 50, 5);
 
-        Slime.TakeDamage(10);
-        Console.WriteLine($"You attacked. {Slime.Name}'s health is now at {Slime.Health}");
-        You.TakeDamage(Slime.Damage);
-        Console.WriteLine($"{Slime.Name} attacked. Your health is now at {You.Health}");
-        Slime.TakeDamage(50);
-        Console.WriteLine($"Critical hit! {Slime.Name} is now a pile of ash");
-        You.AddExp(120);
-        You.GainGold(30);
-        You.Heal(10);
-        Console.WriteLine("Current stats:");
-        Console.WriteLine($"Level {You.Lv}");
-        Console.WriteLine($"Experience {You.Exp}");
-        Console.WriteLine($"Gold {You.Gold}");
+            Slime.TakeDamage(10);
+            Console.WriteLine($"You attacked. {Slime.Name}'s health is now at {Slime.Health}");
+            You.TakeDamage(Slime.Damage);
+            Console.WriteLine($"{Slime.Name} attacked. Your health is now at {You.Health}");
+            Slime.TakeDamage(50);
+            Console.WriteLine($"Critical hit! {Slime.Name} is now a pile of ash");
+            You.AddExp(120);
+            You.GainGold(30);
+            You.Heal(10);
+            Console.WriteLine("Current stats:");
+            Console.WriteLine($"Level {You.Lv}");
+            Console.WriteLine($"Experience {You.Exp}");
+            Console.WriteLine($"Gold {You.Gold}");
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+
+        }
     }
 }

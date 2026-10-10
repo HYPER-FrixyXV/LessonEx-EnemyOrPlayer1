@@ -1,10 +1,10 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/Enemy/Enemy.csproj" />
-    <Project Path="src/Player/Player.csproj" />
-    <Project Path="src/Program/Program.csproj" />
+    <Project Path="src/BPascal.LessonEx3.Domain.Player/BPascal.LessonEx3.Domain.Player.csproj" Id="e7d1cfb5-f002-4520-b02b-0af5e6c3af83" />
+    <Project Path="src/Enemy/BPascal.LessonEx3.Domain.Enemy.csproj" />
+    <Project Path="src/Program/BPascal.LessonEx3.Console.csproj" />
   </Folder>
   <Folder Name="/test/">
-    <Project Path="test/TestProject1/TestProject1.csproj" Id="5fd4e965-5cd9-47a8-b887-e0777d3dc751" />
+    <Project Path="test/BPascal.LessonEx3.Test.Player/BPascal.LessonEx3.Test.Player.csproj" Id="6e58e3e5-dfc4-44b4-9d40-887aa8ef334e" />
   </Folder>
 </Solution>

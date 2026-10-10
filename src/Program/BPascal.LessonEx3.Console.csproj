@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Enemy\Enemy.csproj" />
-    <ProjectReference Include="..\Player\Player.csproj" />
+    <ProjectReference Include="..\BPascal.LessonEx3.Domain.Player\BPascal.LessonEx3.Domain.Player.csproj" />
+    <ProjectReference Include="..\Enemy\BPascal.LessonEx3.Domain.Enemy.csproj" />
   </ItemGroup>
 
 </Project>

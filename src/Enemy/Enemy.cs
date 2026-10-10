@@ -7,13 +7,13 @@ namespace BPascal.LessonEx3.ClassEnemy
 {
     public class Enemy
     {
-        private string _Name;
-        private int _Health;
-        private bool _IsAlive;
+        private string _name;
+        private int _health;
+        private bool _isAlive;
 
         public string Name
         {
-            get { return _Name; }
+            get { return _name; }
             set
             {
                 if (value.IsWhiteSpace() || string.IsNullOrEmpty(value))
@@ -24,25 +24,25 @@ namespace BPascal.LessonEx3.ClassEnemy
         }
         public int Health
         {
-            get { return _Health; }
+            get { return _health; }
             private set
             {
                 if (value < 0)
                 {
-                    _Health = 0;
+                    _health = 0;
                 }
                 else
                 {
-                    _Health = value;
+                    _health = value;
                 }
             }
         }
         public bool IsAlive
         {
-            get { return _IsAlive; }
+            get { return _isAlive; }
             private set
             {
-                _IsAlive = value;
+                _isAlive = value;
             }
         }
 

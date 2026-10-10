@@ -116,10 +116,19 @@ namespace BPascal.LessonEx3.ClassPlayer
             }
         }
 
-        public Player(string name)
+        public Player()
+        {
+            Name = "Default name";
+            Lv = 1;
+            Exp = 0;
+            MaxHealth = 20;
+            Health = MaxHealth;
+        }
+
+        public Player(string name, int level=1)
         {
             Name = name;
-            Lv = 1;
+            Lv = level;
             Exp = 0;
             MaxHealth = 100;
             Health = MaxHealth;
@@ -134,17 +143,24 @@ namespace BPascal.LessonEx3.ClassPlayer
                 throw new ArgumentException("Amount must be positive.");
             }
             Exp += amount;
+
+            if (amount >= 100)
+            {
+                Lv+=Exp/100;
+                Exp -= amount;
+                this.ResetHealth();
+            }
         }
-        public void ResetExp()
+        private void ResetExp()
         {
             Exp = 0;
         }
         public void TakeDamage(int amount)
 
         {
-            if (amount <= 0)
+            if (amount <= 0 && IsAlive)
             {
-                throw new ArgumentException("Amount must be positive.");
+                throw new ArgumentException("Taking damage in a negative amount? We have Heal() for that bro");
             }
             Health -= amount;
             if (Health <= 0)
@@ -158,7 +174,7 @@ namespace BPascal.LessonEx3.ClassPlayer
         {
             if (amount <= 0)
             {
-                throw new ArgumentException("Amount must be positive.");
+                throw new ArgumentException("Healing in a negative amount? We have TakeDamage() for that bro");
             }
             Health += amount;
         }
@@ -170,7 +186,7 @@ namespace BPascal.LessonEx3.ClassPlayer
             }
             Gold += amount;
         }
-        public void ResetHealth()
+        private void ResetHealth()
         {
             Health = MaxHealth;
             IsAlive = true;
