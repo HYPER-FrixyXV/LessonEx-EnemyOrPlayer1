@@ -5,6 +5,7 @@
     <Project Path="src/Program/BPascal.LessonEx3.Console.csproj" />
   </Folder>
   <Folder Name="/test/">
+    <Project Path="test/BPascal.LessonEx3.Test.Enemy/BPascal.LessonEx3.Test.Enemy.csproj" Id="1f639777-6fbd-4582-8d95-e02daa6da9ba" />
     <Project Path="test/BPascal.LessonEx3.Test.Player/BPascal.LessonEx3.Test.Player.csproj" Id="6e58e3e5-dfc4-44b4-9d40-887aa8ef334e" />
   </Folder>
 </Solution>
