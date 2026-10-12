@@ -12,9 +12,9 @@ namespace BPascal.LessonEx3.TestPlayer
         }
 
         [Fact]
-        public void Player_NameNotBlank()
+        public void Player_NameBlank()
         {
-            Assert.Equal("guy", guy.Name);
+            Assert.Throws<ArgumentException>(() => new Player(""));
         }
 
         [Fact]
@@ -35,6 +35,17 @@ namespace BPascal.LessonEx3.TestPlayer
             guy.TakeDamage(10);
             Assert.Equal(90, guy.Health);
         }
+        [Fact]
+        public void Player_TakeDamageOverflow()
+        {
+            guy.TakeDamage(200);
+            Assert.Equal(0, guy.Health);
+        }
+        [Fact]
+        public void Player_TakeNegDamage()
+        {
+            Assert.Throws<ArgumentException>(() => guy.TakeDamage(-5));
+        }
 
         [Fact]
         public void Player_LevelUp()
@@ -50,12 +61,44 @@ namespace BPascal.LessonEx3.TestPlayer
             guy.Heal(25);
             Assert.Equal(75, guy.Health);
         }
+        [Fact]
+        public void Player_HealOverflow()
+        {
+            guy.Heal(10);
+            Assert.Equal(guy.MaxHealth, guy.Health);
+        }
+        [Fact]
+        public void Player_HealAfterDeath()
+        {
+            guy.TakeDamage(100);
+            guy.Heal(10);
+            Assert.Equal(0, guy.Health);
+        }
+        [Fact]
+        public void Player_HealAmountNegative()
+        {
+            Assert.Throws<ArgumentException>(() => guy.Heal(-10));
+        }
+
 
         [Fact]
         public void Player_GainGold()
         {
             guy.GainGold(5);
             Assert.Equal(5, guy.Gold);
+        }
+
+        [Fact]
+        public void Player_NotDead()
+        {
+            Assert.True(guy.IsAlive());
+        }
+
+        [Fact]
+        public void Player_Die()
+        {
+            guy.TakeDamage(100);
+            Assert.False(guy.IsAlive());
         }
     }
 }
